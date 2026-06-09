@@ -1,13 +1,15 @@
 :root {
-  --bg: #ffffff;
+  --bg: #fcfaf2;
   --surface: #ffffff;
   --primary: #14337D;
   --primary-dark: #0f2964;
   --accent: #FDF085;
   --accent-dark: #ED4748;
+  --accent-2: #FFC839;
   --text: #14337D;
-  --muted: #3f4e7c;
-  --border: rgba(20, 51, 125, 0.15);
+  --muted: #375a8c;
+  --border: rgba(20, 51, 125, 0.18);
+  --shadow: rgba(20, 51, 125, 0.08);
 }
 
 * {
@@ -22,7 +24,9 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.6;
-  background: linear-gradient(180deg, #ffffff 0%, #f6f7ff 100%);
+  background: radial-gradient(circle at top left, rgba(253, 240, 133, 0.35), transparent 20%),
+    radial-gradient(circle at top right, rgba(237, 71, 72, 0.12), transparent 18%),
+    linear-gradient(180deg, var(--bg) 0%, #f4f6ff 100%);
   color: var(--text);
 }
 
@@ -50,10 +54,10 @@ textarea {
 .site-header {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
   z-index: 20;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(237, 71, 72, 0.15);
 }
 
 .header-inner {
@@ -61,14 +65,43 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
   padding: 1rem 0;
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  color: var(--primary);
-  font-weight: 800;
-  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  display: block;
+  max-height: 80px;
+  width: auto;
+}
+
+.hero-brand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.hero-logo {
+  display: block;
+  max-width: min(100%, 460px);
+  max-height: 220px;
+  width: auto;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .language-switch {
@@ -91,19 +124,24 @@ textarea {
 
 .site-nav {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
   align-items: center;
+  min-width: 0;
 }
 
 .site-nav a {
   color: var(--text);
   text-decoration: none;
-  transition: color 0.2s ease;
+  font-weight: 600;
+  transition: color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
 }
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
-  color: var(--primary);
+  color: var(--accent-dark);
+  transform: translateY(-1px);
 }
 
 .nav-toggle {
@@ -123,14 +161,50 @@ textarea {
 }
 
 .hero {
-  padding: 4rem 0 3rem;
+  padding: 4.5rem 0 3.25rem;
 }
 
 .hero-content {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
   align-items: center;
+  position: relative;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 10rem;
+  height: 10rem;
+  background: radial-gradient(circle, rgba(237, 71, 72, 0.18), transparent 55%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -1rem;
+  width: 8rem;
+  height: 8rem;
+  background: radial-gradient(circle, rgba(253, 240, 133, 0.35), transparent 55%);
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .eyebrow {
@@ -150,12 +224,15 @@ textarea {
   margin: 0 0 1rem;
   font-size: clamp(2.5rem, 4vw, 4rem);
   line-height: 1.05;
+  color: var(--primary);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.85);
 }
 
 .hero p {
-  max-width: 40rem;
+  max-width: 44rem;
   color: var(--muted);
   margin-bottom: 2rem;
+  font-size: 1.05rem;
 }
 
 .hero-actions {
@@ -183,6 +260,7 @@ textarea {
 .button-primary {
   background: var(--accent-dark);
   color: #fff;
+  box-shadow: 0 14px 24px rgba(237, 71, 72, 0.18);
 }
 
 .button-primary:hover {
@@ -192,6 +270,7 @@ textarea {
 .button-secondary {
   background: var(--primary);
   color: #fff;
+  box-shadow: 0 14px 24px rgba(20, 51, 125, 0.18);
 }
 
 .button-secondary:hover {
@@ -205,7 +284,8 @@ textarea {
 }
 
 .section-alt {
-  background: #fff9d7;
+  background: linear-gradient(180deg, #fff9d7 0%, #ffffff 100%);
+  border-top: 1px solid rgba(237, 71, 72, 0.08);
 }
 
 .section-grid,
@@ -234,6 +314,11 @@ textarea {
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 2rem;
+  box-shadow: 0 18px 25px rgba(20, 51, 125, 0.06);
+}
+
+.feature-card {
+  border-top: 6px solid var(--accent-dark);
 }
 
 .feature-card h3,
@@ -350,7 +435,11 @@ textarea {
 }
 
 @media (max-width: 900px) {
-  .hero-content,
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
   .section-grid,
   .about-grid,
   .process-grid,
