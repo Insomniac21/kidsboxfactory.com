@@ -403,6 +403,35 @@ textarea {
   align-items: center;
 }
 
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.25rem;
+}
+
+.contact-card h3 {
+  margin-top: 0;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.contact-form .button-secondary {
+  margin-top: 0.5rem;
+}
+
 .contact-form label {
   display: block;
   font-weight: 600;
