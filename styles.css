@@ -301,6 +301,66 @@ textarea {
   align-items: start;
 }
 
+.game-section {
+  grid-template-columns: 1fr 1.2fr;
+  align-items: start;
+}
+
+.game-info {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.game-controls {
+  display: grid;
+  gap: 1rem;
+}
+
+.game-control-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.game-control-group select,
+.game-control-group input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 0.95rem 1rem;
+  background: #f8fafc;
+}
+
+.game-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.game-canvas {
+  min-height: 360px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 30px rgba(20, 51, 125, 0.06);
+  overflow: hidden;
+}
+
+.recipe-output {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+.recipe-title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.recipe-details {
+  white-space: pre-wrap;
+  color: var(--muted);
+}
+
 .cards-grid {
   display: grid;
   gap: 1rem;
